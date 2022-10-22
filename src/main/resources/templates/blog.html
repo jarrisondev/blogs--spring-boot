@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="'Blog: ' + ${blog.getTitle()}"></title>
+</head>
+<body>
+    <h1 th:text="${blog.getTitle()}"></h1>
+    <p th:text="${blog.getContent()}"></p>
+    <br>
+    
+    <a th:href="@{/deleteBlog/{id}(id=${blog.getId()})}">Delete</a>
+    <br>
+    <a href="/">Go to blogs</a>
+</body>
+</html>
