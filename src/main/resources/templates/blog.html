@@ -1,18 +1,25 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title th:text="'Blog: ' + ${blog.getTitle()}"></title>
-</head>
-<body>
-    <h1 th:text="${blog.getTitle()}"></h1>
-    <p th:text="${blog.getContent()}"></p>
-    <br>
-    
-    <a th:href="@{/deleteBlog/{id}(id=${blog.getId()})}">Delete</a>
-    <br>
-    <a href="/">Go to blogs</a>
-</body>
+<html lang="en" class="min-h-screen bg-slate-800" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="https://cdn.tailwindcss.com"></script>
+		<title th:text="'Blog: ' + ${blog.getTitle()}"></title>
+	</head>
+	<body class="flex flex-col justify-center items-center min-h-screen">
+		<div class="w-full max-w-5xl px-16 py-5 bg-slate-100 rounded-xl flex flex-col">
+			<h1 class="text-2xl text-center font-bold" th:text="${blog.getTitle()}"></h1>
+			<br />
+			<h4 class="text-lg font-bold">Content:</h4>
+			<p th:text="${blog.getContent()}"></p>
+			<br />
+			<div class="flex gap-5">
+				<a class="p-2 bg-slate-600 text-white rounded-md w-16" th:href="@{/deleteBlog/{id}(id=${blog.getId()})}"
+					>Delete</a
+				>
+				<a class="p-2 bg-slate-200 rounded-md w-auto" href="/">Go to blogs</a>
+			</div>
+		</div>
+	</body>
 </html>
