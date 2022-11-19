@@ -8,24 +8,36 @@
 		<title>Blogs</title>
 	</head>
 	<body class="flex flex-col justify-center items-center min-h-screen">
-		<div class="w-full max-w-5xl px-16 py-5 bg-slate-100 rounded-xl flex flex-col items-center">
+		<div class="w-full max-w-5xl flex justify-between px-2 pt-2 bg-slate-100 rounded-t-xl">
+			<span class="flex gap-1">
+				<p class="text-lg">Hola,</p>
+				<p th:text="'@'+${currentUser}" class="text-lg font-bold cursor-default"></p>
+			</span>
+			<span class="flex gap-5">
+				<a class="p-1 text-slate-800 rounded-md cursor-pointer text-sm underline" href="/">Ver favoritos</a>
+				<a class="p-1 bg-slate-600 text-white rounded-md cursor-pointer text-sm" href="/logout">Cerrar Sesión</a>
+			</span>
+		</div>
+		<div class="w-full max-w-5xl px-16 py-5 bg-slate-100 rounded-b-xl flex flex-col items-center">
 			<h1 class="text-2xl text-center font-bold">Blogs</h1>
 			<br />
 			<table class="table-auto w-full">
 				<thead>
 					<tr>
 						<th>Id</th>
-						<th>Nombre</th>
+						<th>Usuario</th>
+						<th>Titulo</th>
 						<th>Contenido</th>
-						<th>Acciones</th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr th:each="blog : ${blogs}" class="text-center">
 						<td th:text="${blog.getId}"></td>
+						<td th:text="${blog.getUsername}"></td>
 						<td th:text="${blog.getTitle}"></td>
 						<td
-							class="w-16 cursor-help"
+							class="w-50 cursor-help"
 							th:title="${blog.getContent}"
 							th:text="${#strings.abbreviate(blog.getContent,20)} "
 						></td>
@@ -42,8 +54,7 @@
 					</tr>
 				</tbody>
 			</table>
-
-			<a class="p-2 bg-slate-600 text-white rounded-md" href="/newBlog">Create Blog</a>
+			<a class="p-2 mt-10 bg-slate-600 text-white rounded-md" href="/newBlog">Create Blog</a>
 		</div>
 	</body>
 </html>

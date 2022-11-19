@@ -14,11 +14,19 @@
 			<h4 class="text-lg font-bold">Content:</h4>
 			<p th:text="${blog.getContent()}"></p>
 			<br />
-			<div class="flex gap-5">
-				<a class="p-2 bg-slate-600 text-white rounded-md w-16" th:href="@{/deleteBlog/{id}(id=${blog.getId()})}"
-					>Delete</a
+			<div class="flex justify-between">
+				<span class="flex gap-5">
+					<a
+						th:if="${canDelete}"
+						class="p-2 bg-slate-200 rounded-md w-16"
+						th:href="@{/deleteBlog/{id}(id=${blog.getId()})}"
+						>Delete</a
+					>
+					<a class="p-2 bg-slate-600 text-white rounded-md w-auto" href="/">Go to blogs</a>
+				</span>
+				<a class="p-2 text-sky-800 bg-sky-200 rounded-md" th:href="@{/addToFavorite/{id}(id=${blog.getId()})}"
+					>Add To Favorite</a
 				>
-				<a class="p-2 bg-slate-200 rounded-md w-auto" href="/">Go to blogs</a>
 			</div>
 		</div>
 	</body>

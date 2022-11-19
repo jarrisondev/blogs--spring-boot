@@ -1,10 +1,15 @@
 package com.blog.Models;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -25,13 +30,22 @@ public class Blog {
     @Column(name = "published")
     private boolean published;
 
+    @ManyToOne
+    @JoinColumn(name = "username")
+    private User username;
+
+    // @ManyToMany(mappedBy = "likedBlogs")
+    // Set<User> likes;
+
+
     public Blog() {
     }
 
-    public Blog(String title, String content, boolean published) {
+    public Blog(String title, String content, boolean published, User username) {
         this.title = title;
         this.content = content;
         this.published = published;
+        this.username = username;
     }
     
     public Long getId() {
@@ -40,6 +54,10 @@ public class Blog {
     
       public String getTitle() {
         return title;
+      }
+
+      public String getUsername() {
+        return username.getUsername();
       }
     
       public void setTitle(String title) {
