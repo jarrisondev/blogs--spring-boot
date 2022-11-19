@@ -10,15 +10,25 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<script src="https://cdn.tailwindcss.com"></script>
-		<title>Inicio de sesión</title>
+		<title>Registro</title>
 	</head>
 	<body class="flex flex-col justify-center items-center min-h-screen">
 		<div class="w-full max-w-5xl px-16 py-5 bg-slate-100 rounded-xl">
-			<h1 class="text-2xl text-center font-bold">Inicio de sesión</h1>
+			<h1 class="text-2xl text-center font-bold">Creación de cuenta</h1>
 			<br />
-			<form class="mt-10 flex flex-col gap-24" method="post" th:action="@{/login}">
+			<form class="mt-10 flex flex-col gap-24" method="post" th:action="@{/register}">
 				<div class="flex justify-center">
 					<div class="flex flex-col gap-7">
+						<label>
+							<p>Nombre:</p>
+							<input
+								class="border-slate-500 h-8 border-2 rounded-md"
+								type="text"
+								name="name"
+								id="name"
+								placeholder="Nombre Completo"
+							/>
+						</label>
 						<label>
 							<p>Username:</p>
 							<input
@@ -36,16 +46,15 @@
 								name="password"
 								type="password"
 								placeholder="Contraseña"
-								class="border-slate-500 border-2 rounded-md"
+								class="border-slate-500 h-8 border-2 rounded-md"
 							/>
 						</label>
-						<p th:if="${param.error}">Invalid username and password.</p>
-						<p th:if="${param.logout}">You have been logged out.</p>
 					</div>
 				</div>
+				<p class="text-center text-red-400" th:text="${error}"></p>
 				<div class="flex gap-7 justify-center">
-					<input class="p-2 bg-slate-600 text-white rounded-md cursor-pointer" type="submit" value="Iniciar Sesión" />
-					<a class="p-2 bg-slate-200 rounded-md w-auto" href="/register">Crear Usuario</a>
+					<input class="p-2 bg-slate-600 text-white rounded-md cursor-pointer" type="submit" value="Registrarse" />
+					<a class="p-2 bg-slate-200 rounded-md w-auto" href="/login">Iniciar Sesión</a>
 				</div>
 			</form>
 		</div>
